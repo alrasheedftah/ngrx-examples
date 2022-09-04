@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DecrementAction, IncrementAction } from './store/action/counter.action';
+import { nameSelector } from './store/selectors/counter.selector';
 import {  StoreInterface } from './store/store';
 
 @Component({
@@ -13,10 +14,14 @@ export class AppComponent {
 
   count : number  = 0
   constructor(private store : Store<StoreInterface>){
-    this.store.subscribe(data => {
-    console.log(data)
+    // Without Selector 
+    // this.store.subscribe(data => {
+    // console.log(data)
       
-      this.count = data.counter.n})
+    //   this.count = data.counter.n})
+
+    // By Selector 
+    this.store.select(nameSelector).subscribe(data => this.count = data)
   }
 
 
