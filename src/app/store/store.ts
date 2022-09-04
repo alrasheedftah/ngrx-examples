@@ -1,5 +1,7 @@
-import { Action } from "@ngrx/store";
 
+
+export const INCREMENT = "increment"
+export const DECREMENT = "decrement"
 
 export interface StoreInterface{
     counter : Counter
@@ -13,14 +15,18 @@ let inialState = {
     n : 0
 }
 
-export function reducerFunction(state = inialState ,action : Action ){
+export function reducerFunction(state = inialState ,action : any ){
     switch(action.type){
-        case 'incr' : 
+        case INCREMENT : 
         return {
-            n : state.n + 1
+            // Without Payload
+            // n : state.n + 1
+
+            // With Payload Params
+            n : state.n + action.payload
         }
 
-        case  'decr' :
+        case  DECREMENT :
             return {
                 n : state.n - 1
             }
@@ -28,5 +34,34 @@ export function reducerFunction(state = inialState ,action : Action ){
         default :
             return state;    
     }
+}
+
+
+
+
+interface CustomAction{
+    payload : any ;
+    type : string ;
+}
+
+
+// ACtion With Payload
+export class IncrementAction {
+    type  = INCREMENT
+    payload : number 
+    constructor (payload : number){
+        this.payload = payload;
+    }
+
+}
+
+
+export class DecrementAction{
+    type  = DECREMENT
+    payload : number;
+    constructor (payload : number){
+        this.payload = payload;
+    }
+
 }
 

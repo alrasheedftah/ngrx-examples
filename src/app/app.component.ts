@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { StoreInterface } from './store/store';
+import { DecrementAction, IncrementAction, StoreInterface } from './store/store';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +20,11 @@ export class AppComponent {
 
 
   decrement(){
-    this.store.dispatch({type : "decr"})
+    this.store.dispatch(new DecrementAction(2))
   }
 
   increment(){
-    this.store.dispatch({type : "incr"})
+    this.store.dispatch(new IncrementAction(3))
   }  
 
 }
