@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DecrementAction, IncrementAction } from './store/action/counter.action';
+import { LoadAction } from './store/action/todo.action';
 import { nameSelector } from './store/selectors/counter.selector';
+import { TodoSelector } from './store/selectors/todos.selector';
 import {  StoreInterface } from './store/store';
 
 @Component({
@@ -22,6 +24,7 @@ export class AppComponent {
 
     // By Selector 
     this.store.select(nameSelector).subscribe(data => this.count = data)
+    this.store.select(TodoSelector).subscribe(data => console.log(data))
   }
 
 
@@ -33,4 +36,9 @@ export class AppComponent {
     this.store.dispatch(new IncrementAction(3))
   }  
 
+
+  load(){
+    console.log("aaa")
+    this.store.dispatch(new LoadAction())
+  }
 }

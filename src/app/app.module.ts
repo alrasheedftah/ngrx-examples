@@ -5,6 +5,10 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { reducer } from './store/store';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { TodosEffects } from './store/effects/todo.effect';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +17,9 @@ import { reducer } from './store/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducer)
+    HttpClientModule,
+    StoreModule.forRoot(reducer),
+    EffectsModule.forRoot([TodosEffects])
 
   ],
   providers: [],
