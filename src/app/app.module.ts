@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducerFunction } from './store/store';
+import { reducer } from './store/store';
 
 @NgModule({
   declarations: [
@@ -13,9 +13,7 @@ import { reducerFunction } from './store/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      counter : reducerFunction
-    })
+    StoreModule.forRoot(reducer)
 
   ],
   providers: [],
