@@ -13,7 +13,7 @@ export interface CustomAction{
     payload? : any ; // must be allow null Or disable ts-compiler 
     type : string ;
 }
-
+ 
 
 
 export const reducer : ActionReducerMap<StoreInterface> = { counter : reducerFunction , todos : todosListReduser }
